@@ -1,0 +1,57 @@
+<div id="name-container">
+  <% datas.forEach(data => { %>
+  <p class="name"><%= data.nama %></p>
+  <% }) %>
+</div>
+<div id="name"></div>
+
+<script>
+  function getRandomFontSize() {
+    return Math.floor(Math.random() * 50) + 10; // Ukuran font antara 10px dan 60px
+  }
+
+  function getRandomFontWeight() {
+    const weights = [100, 200, 300, 400, 500, 600, 700, 800, 900];
+    return weights[Math.floor(Math.random() * weights.length)];
+  }
+
+  function getRandomColor() {
+    const letters = "0123456789ABCDEF";
+    let color = "#";
+    for (let i = 0; i < 6; i++) {
+      color += letters[Math.floor(Math.random() * 16)];
+    }
+    return color;
+  }
+
+  function getRandomPosition(max) {
+    return Math.floor(Math.random() * max);
+  }
+
+  function getRandomName() {
+    const names = document.querySelectorAll(".name");
+    const randomIndex = Math.floor(Math.random() * names.length);
+    return names[randomIndex].textContent;
+  }
+
+  function displayRandomName() {
+    const nameElement = document.getElementById("name");
+    const maxWidth = window.innerWidth - nameElement.offsetWidth;
+    const maxHeight = window.innerHeight - nameElement.offsetHeight;
+
+    nameElement.classList.remove("fade-in");
+    nameElement.classList.add("fade-out");
+    setTimeout(() => {
+      nameElement.textContent = getRandomName();
+      nameElement.style.fontSize = getRandomFontSize() + "px";
+      nameElement.style.fontWeight = getRandomFontWeight();
+      nameElement.style.color = getRandomColor();
+      nameElement.style.left = getRandomPosition(maxWidth) + "px";
+      nameElement.style.top = getRandomPosition(maxHeight) + "px";
+      nameElement.classList.remove("fade-out");
+      nameElement.classList.add("fade-in");
+    }, 1000); // Waktu yang sama dengan durasi animasi
+  }
+
+  setInterval(displayRandomName, 2000); // Setiap 5 detik
+</script>

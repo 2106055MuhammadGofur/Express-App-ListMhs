@@ -1,0 +1,21 @@
+<div class="about-container">
+  <div class="name" id="name">Muhammad Gopur</div>
+
+  <script>
+    const nameElement = document.getElementById("name");
+
+    document.body.addEventListener("mousemove", (e) => {
+      const x = e.clientX;
+      const y = e.clientY;
+      const rect = nameElement.getBoundingClientRect();
+      const isInX = x > rect.left && x < rect.right;
+      const isInY = y > rect.top && y < rect.bottom;
+
+      if (isInX && isInY) {
+        nameElement.classList.add("reveal");
+      } else {
+        nameElement.classList.remove("reveal");
+      }
+    });
+  </script>
+</div>

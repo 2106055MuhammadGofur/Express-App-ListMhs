@@ -1,0 +1,32 @@
+<div class="container">
+  <div class="row">
+    <div class="md-8">
+      <h2 class="mt-3">Detail Mahasiswa</h2>
+
+      <% if (!data) { %>
+      <div class="alert alert-danger mt-3" role="alert">Data Tidak Ada</div>
+      <% } else { %>
+
+      <div class="card mt-3" style="max-width: 540px">
+        <div class="row g-0">
+          <div class="col-md-7">
+            <div class="card-body">
+              <h5 class="card-text">Nama : <%= data.nama %></h5>
+              <h5 class="card-text">NIM : <%= data.nim %></h5>
+              <h5 class="card-text">Kelas : <%= data.kelas %></h5>
+              <h5 class="card-text">Alamat : <%= data.alamat %></h5>
+            </div>
+          </div>
+        </div>
+      </div>
+      <a href="/member/edit/<%= data.nama %>" class="btn btn-info mt-2">Edit</a>
+      <a
+        href="/member/delete/<%= data.nama %>"
+        class="btn btn-danger mt-2"
+        onclick="return confirm('Yakin?')"
+        >Hapus</a
+      >
+      <% } %>
+    </div>
+  </div>
+</div>
